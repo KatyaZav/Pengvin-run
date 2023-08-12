@@ -196,8 +196,8 @@ GameObject:
   - component: {fileID: 227527559}
   - component: {fileID: 227527564}
   - component: {fileID: 227527561}
-  - component: {fileID: 227527563}
   - component: {fileID: 227527562}
+  - component: {fileID: 227527565}
   m_Layer: 0
   m_Name: penguin
   m_TagString: Untagged
@@ -265,7 +265,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 227527558}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.06, y: 1.01, z: 0}
+  m_LocalPosition: {x: -8.06, y: 0.7, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -315,22 +315,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
---- !u!70 &227527563
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 227527558}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.012942382, y: -1.0523942}
-  m_Size: {x: 1.6208997, y: 2.4821436}
-  m_Direction: 0
 --- !u!114 &227527564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,12 +327,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 393b1551bfa447e4ea61d497b95b051d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameControlButtons: Player1
+  name: Player 1
+  nameJumpControlButtons: Player1Up
+  nameSlideControlButtons: Player1Down
+  jumpCount: 2
   isGrounded: 0
   groundMask:
     serializedVersion: 2
     m_Bits: 64
   footPos: {fileID: 1083673880}
+--- !u!61 &227527565
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227527558}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.024309158, y: -1.09584}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.12, y: 5.12}
+    newSize: {x: 5.12, y: 5.12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.0571728, y: 2.4233418}
+  m_EdgeRadius: 0
 --- !u!4 &384315308 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7339196760520471269, guid: c8f0806537536ea4db6a8cfb3ef01a48, type: 3}
@@ -400,7 +413,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 461758461}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7f765494077b3c4591ed5d42e31dbdf, type: 3}
   m_Name: 

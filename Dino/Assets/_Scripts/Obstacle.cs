@@ -6,9 +6,12 @@ public class Obstacle : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Соприкосновение с " + collision.gameObject);
-        Debug.LogWarning("Добавить звук!");
+        var obj = collision.gameObject.GetComponent<PlayerMoving>();
 
-        Destroy(gameObject);
+        if (obj != null)
+        {
+            Destroy(gameObject);
+            obj.Dead();
+        }
     }
 }

@@ -1,18 +1,25 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMoving : MonoBehaviour
 {
-    [SerializeField] string nameControlButtons;
+    new public string name = "Player 1";
+    
+    [SerializeField] string nameJumpControlButtons;
+    [SerializeField] string nameSlideControlButtons;
+    [SerializeField]private int jumpCount = 2;
+    
     Rigidbody2D rb;
     Animator anim;
     public bool isGrounded = false;
-    private bool lastGround = false;
     public static float jumpForce = 12;
 
     public LayerMask groundMask;
     public Transform footPos;
+
+    public static Action<string> PlayerDead;
 
     void Start()
     {
@@ -20,30 +27,43 @@ public class PlayerMoving : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();           
     }
 
-    void FixedUpdate()
+    void Update()
     {
         isGrounded = Physics2D.OverlapCircle(footPos.position, 0.2f, groundMask);
         
         if (isGrounded)
         {
             Fall();
-            if (Input.GetButtonDown(nameControlButtons.ToString())){
-                Jump();
-            }
+            Slide();
         }
-
-        lastGround = isGrounded;
+        
+        if (Input.GetButtonDown(nameJumpControlButtons.ToString()) && (isGrounded || jumpCount > 0)){
+            Jump();
+        }
     }
 
     private void Jump()
     {
+        jumpCount--;
         rb.velocity = new Vector2(rb.position.x, 0);
         rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
     }
 
+    private void Slide()
+    {
+        anim.SetBool("slide", Input.GetButton(nameSlideControlButtons.ToString()));
+    }
+
     private void Fall()
     {
-        //if (!lastGround && isGrounded)
-          //  anim.SetTrigger("jump");
+        jumpCount = 2;
+    }
+
+    public void Dead()
+    {
+        Debug.Log(name + " умер");
+        Debug.LogWarning("Добавить звук!");
+
+        PlayerDead?.Invoke(name);
     }
 }
