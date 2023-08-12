@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1599662512864401420, guid: 776e9097000f9bc4db73870e8d15fe85, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4550816731868151520, guid: 776e9097000f9bc4db73870e8d15fe85, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -57,7 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7439327773534094680, guid: 776e9097000f9bc4db73870e8d15fe85, type: 3}
       propertyPath: m_Name
-      value: Triangle
+      value: Triangle Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 776e9097000f9bc4db73870e8d15fe85, type: 3}

@@ -16,7 +16,7 @@ public class Moving : MonoBehaviour
     
     void Update()
     {
-        int speed = 2;
+        float speed = Spawner.speed;
         rb.velocity = new Vector2(-speed, 0);
 
         if (transform.position.x <= -25)

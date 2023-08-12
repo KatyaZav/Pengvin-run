@@ -15,7 +15,7 @@ public class PlayerMoving : MonoBehaviour
     Animator anim;
     public bool isGrounded = false;
     public static float jumpForce = 13;
-
+    
     public LayerMask groundMask;
     public Transform footPos;
 
