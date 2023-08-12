@@ -7,10 +7,6 @@ public class Spawner : MonoBehaviour
     public Transform spawnPoint;
     public GameObject[] lvls;
 
-    private void Awake()
-    {
-        //CreateLvl();
-    }
     public void CreateLvl()
     {
         var rand = Random.Range(0, lvls.Length);

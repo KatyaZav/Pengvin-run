@@ -14,7 +14,7 @@ public class PlayerMoving : MonoBehaviour
     Rigidbody2D rb;
     Animator anim;
     public bool isGrounded = false;
-    public static float jumpForce = 12;
+    public static float jumpForce = 13;
 
     public LayerMask groundMask;
     public Transform footPos;

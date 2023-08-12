@@ -288,7 +288,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.024309158, y: -1.09584}
+  m_Offset: {x: 0.00988251, y: -1.09584}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -299,7 +299,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.0571728, y: 2.4233418}
+  m_Size: {x: 1.0281073, y: 2.4233418}
   m_EdgeRadius: 0
 --- !u!1 &519420028
 GameObject:
@@ -737,6 +737,15 @@ MonoBehaviour:
   spawnPoint: {fileID: 1198606718}
   lvls:
   - {fileID: 9071678376804532581, guid: 800535714fa04604c8a1e3c959159f46, type: 3}
+  - {fileID: 2531620133545703315, guid: 54e62b16fd659b54d9477804b0344bc7, type: 3}
+  - {fileID: 1492332251156947243, guid: f84f59d029a2ec647a38506778e587ea, type: 3}
+  - {fileID: 55720862579896596, guid: f66dafd1e5017e442ab72a0ef59f96ea, type: 3}
+  - {fileID: 6170253752093253184, guid: 9c910f260541c6244a10595263f2d542, type: 3}
+  - {fileID: 1217325763376278943, guid: 4cb21cbcd1295774388cf46687b5f7ba, type: 3}
+  - {fileID: 6224849656307587578, guid: 9db57cf8551aebf468a82640cdca2cac, type: 3}
+  - {fileID: 2404580335980574983, guid: 46e16582597925f4b8428155ef5880d0, type: 3}
+  - {fileID: 4839787524419222449, guid: f26c1c70d8d8d1947a81248913191e0a, type: 3}
+  - {fileID: 8139639222611044328, guid: 9288961d2e941cb40a56e3db5b691432, type: 3}
 --- !u!4 &2021177288
 Transform:
   m_ObjectHideFlags: 0
@@ -790,6 +799,10 @@ PrefabInstance:
     - target: {fileID: 9071678376804532581, guid: 800535714fa04604c8a1e3c959159f46, type: 3}
       propertyPath: m_Name
       value: Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 9071678376804532581, guid: 800535714fa04604c8a1e3c959159f46, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9071678376804532581, guid: 800535714fa04604c8a1e3c959159f46, type: 3}
       propertyPath: m_TagString
