@@ -3,8 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Spawner
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -12,9 +11,9 @@ TagManager:
   - 
   - Water
   - UI
-  - Ground
-  - Obstacle
-  - Lvl
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -41,13 +40,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: bg
-    uniqueID: 3131798397
-    locked: 0
-  - name: main layer
-    uniqueID: 4062856227
-    locked: 0
-  - name: New Layer 3
-    uniqueID: 1312799799
     locked: 0
