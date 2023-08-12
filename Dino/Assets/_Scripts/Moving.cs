@@ -24,10 +24,10 @@ public class Moving : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (transform.position.x <= 0.5 && !isSpawned)
+        if (transform.position.x <= 0.6 && !isSpawned)
         {
-            spawner.CreateLvl();
             isSpawned = true;
+            spawner.CreateLvl();
         }
     }
 }
