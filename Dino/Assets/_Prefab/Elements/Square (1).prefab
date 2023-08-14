@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2366083533519668193}
   - component: {fileID: 4936192705037690871}
   - component: {fileID: 1248779333031659945}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -232111069
-  m_SortingLayer: 2
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.7837665, g: 0.8113208, b: 0.81079143, a: 1}

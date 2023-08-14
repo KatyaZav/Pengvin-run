@@ -5,10 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Packeges/ExampleProject/Scenes/Menu.unity
-    guid: 5ee6491ff6503e345b2fda4308404d13
-  - enabled: 1
-    path: Assets/Packeges/ExampleProject/Scenes/FlyBird.unity
-    guid: ef9bd5f650229d147ac57a1ef7f2a3c1
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}
