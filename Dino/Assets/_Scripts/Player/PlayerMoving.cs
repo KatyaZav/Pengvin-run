@@ -33,13 +33,24 @@ public class PlayerMoving : MonoBehaviour
         
         if (isGrounded)
         {
-            Fall();
+            OnFalledOnGround();
             Slide();
         }
         
         if (Input.GetButtonDown(nameJumpControlButtons.ToString()) && (isGrounded || jumpCount > 0)){
             Jump();
         }
+
+        if (Input.GetButton(nameSlideControlButtons.ToString()) && !isGrounded)
+        {
+            Fall();
+        }
+    }
+
+    private void Fall()
+    {
+        rb.velocity = new Vector2(rb.position.x, 0);
+        rb.AddForce(new Vector2(0, -jumpForce/2), ForceMode2D.Impulse);
     }
 
     private void Jump()
@@ -54,7 +65,7 @@ public class PlayerMoving : MonoBehaviour
         anim.SetBool("slide", Input.GetButton(nameSlideControlButtons.ToString()));
     }
 
-    private void Fall()
+    private void OnFalledOnGround()
     {
         jumpCount = 2;
     }
