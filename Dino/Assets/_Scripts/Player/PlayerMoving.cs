@@ -37,7 +37,9 @@ public class PlayerMoving : MonoBehaviour
             Slide();
         }
         
-        if (Input.GetButtonDown(nameJumpControlButtons.ToString()) && (isGrounded || jumpCount > 0)){
+        if (Input.GetButtonDown(nameJumpControlButtons.ToString()) 
+            && (isGrounded || jumpCount > 0)
+            && !Input.GetButton(nameSlideControlButtons.ToString())){
             Jump();
         }
 
