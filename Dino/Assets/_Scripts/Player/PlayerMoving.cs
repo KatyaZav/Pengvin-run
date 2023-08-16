@@ -19,33 +19,41 @@ public class PlayerMoving : MonoBehaviour
     public LayerMask groundMask;
     public Transform footPos;
 
+    public bool isRun = true;
+
     public static Action<string> PlayerDead;
 
     void Start()
     {
         anim = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody2D>();           
+        rb = GetComponent<Rigidbody2D>();
+
+        anim.SetBool("idle", !isRun);
     }
 
     void Update()
     {
-        isGrounded = Physics2D.OverlapCircle(footPos.position, 0.2f, groundMask);
-        
-        if (isGrounded)
+        if (isRun)
         {
-            OnFalledOnGround();
-            Slide();
-        }
-        
-        if (Input.GetButtonDown(nameJumpControlButtons.ToString()) 
-            && (isGrounded || jumpCount > 0)
-            && !Input.GetButton(nameSlideControlButtons.ToString())){
-            Jump();
-        }
+            isGrounded = Physics2D.OverlapCircle(footPos.position, 0.2f, groundMask);
 
-        if (Input.GetButton(nameSlideControlButtons.ToString()) && !isGrounded)
-        {
-            Fall();
+            if (isGrounded)
+            {
+                OnFalledOnGround();
+                Slide();
+            }
+
+            if (Input.GetButtonDown(nameJumpControlButtons.ToString())
+                && (isGrounded || jumpCount > 0)
+                && !Input.GetButton(nameSlideControlButtons.ToString()))
+            {
+                Jump();
+            }
+
+            if (Input.GetButton(nameSlideControlButtons.ToString()) && !isGrounded)
+            {
+                Fall();
+            }
         }
     }
 
