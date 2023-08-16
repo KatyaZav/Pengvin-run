@@ -15,6 +15,7 @@ public class PlayerMoving : MonoBehaviour
     Animator anim;
     public bool isGrounded = false;
     public static float jumpForce = 13;
+    private bool isIdle = true;
     
     public LayerMask groundMask;
     public Transform footPos;
@@ -24,28 +25,34 @@ public class PlayerMoving : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody2D>();           
+        rb = GetComponent<Rigidbody2D>();
+
+        anim.SetBool("idle", isIdle);
     }
 
     void Update()
     {
-        isGrounded = Physics2D.OverlapCircle(footPos.position, 0.2f, groundMask);
-        
-        if (isGrounded)
+        if (!isIdle)
         {
-            OnFalledOnGround();
-            Slide();
-        }
-        
-        if (Input.GetButtonDown(nameJumpControlButtons.ToString()) 
-            && (isGrounded || jumpCount > 0)
-            && !Input.GetButton(nameSlideControlButtons.ToString())){
-            Jump();
-        }
+            isGrounded = Physics2D.OverlapCircle(footPos.position, 0.2f, groundMask);
 
-        if (Input.GetButton(nameSlideControlButtons.ToString()) && !isGrounded)
-        {
-            Fall();
+            if (isGrounded)
+            {
+                OnFalledOnGround();
+                Slide();
+            }
+
+            if (Input.GetButtonDown(nameJumpControlButtons.ToString())
+                && (isGrounded || jumpCount > 0)
+                && !Input.GetButton(nameSlideControlButtons.ToString()))
+            {
+                Jump();
+            }
+
+            if (Input.GetButton(nameSlideControlButtons.ToString()) && !isGrounded)
+            {
+                Fall();
+            }
         }
     }
 
@@ -78,5 +85,14 @@ public class PlayerMoving : MonoBehaviour
         Debug.LogWarning("Добавить звук!");
 
         PlayerDead?.Invoke(name);
+    }
+
+    public static Action GameStartded;
+    public void GameStart()
+    {
+        isIdle = false;
+        anim.SetBool("idle", isIdle);
+
+        GameStartded?.Invoke();
     }
 }
