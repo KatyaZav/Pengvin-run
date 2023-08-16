@@ -16,7 +16,7 @@ public class Moving : MonoBehaviour
     
     void Update()
     {
-        float speed = Spawner.speed;
+        float speed = Spawner.Speed;
         rb.velocity = new Vector2(-speed, 0);
 
         if (transform.position.x <= -25)
@@ -27,7 +27,7 @@ public class Moving : MonoBehaviour
         if (transform.position.x <= 0.6 && !isSpawned)
         {
             isSpawned = true;
-            spawner.CreateLvl();
+            spawner.CreateLvlPart();
         }
     }
 }

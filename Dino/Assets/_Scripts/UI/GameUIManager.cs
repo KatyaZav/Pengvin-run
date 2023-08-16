@@ -21,7 +21,7 @@ public class GameUIManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        textScore += (int)Spawner.speed / 2;
+        textScore += (int)Spawner.Speed / 2;
         scoreText.text = string.Format("{0:D16}", textScore);
     }
 

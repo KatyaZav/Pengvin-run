@@ -7,26 +7,39 @@ public class Spawner : MonoBehaviour
     public Transform spawnPoint;
     public GameObject[] lvls;
 
-    public static float speed = 2f;
+    public static float Speed { get; private set;}
 
     private void Start()
     {
         StartCoroutine(AddMoreSpeed());    
     }
 
-    public void CreateLvl()
+    /// <summary>
+    /// Create part of level
+    /// </summary>
+    public void CreateLvlPart()
     {
         var rand = Random.Range(0, lvls.Length);
-        Instantiate(lvls[rand], new Vector2(spawnPoint.transform.position.x, spawnPoint.transform.position.y), Quaternion.identity);
+
+        Instantiate(lvls[rand],
+            new Vector2(spawnPoint.transform.position.x, spawnPoint.transform.position.y),
+            Quaternion.identity);
     }    
 
+    /// <summary>
+    /// Add speed while time
+    /// </summary>
     private IEnumerator AddMoreSpeed()
     {
         while (true)
         {
-            if (speed < 20f)
-                speed += 0.5f;
-            yield return new WaitForSeconds(speed/3);
+            if (Speed < 20f)
+            {
+                Speed += 0.5f;
+                Debug.Log(string.Format("Speed increase to {0}", Speed));
+            }
+
+            yield return new WaitForSeconds(Speed/3);
         }
     }
 }
