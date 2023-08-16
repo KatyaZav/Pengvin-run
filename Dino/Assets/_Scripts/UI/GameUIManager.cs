@@ -44,7 +44,9 @@ public class GameUIManager : MonoBehaviour
         
         return zeros;
     }
-
+    /// <summary>
+    /// Pause or resume on button pause click
+    /// </summary>
     public void OnPauseButtonClick()
     {
         if (isPause)
