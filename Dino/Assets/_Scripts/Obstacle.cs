@@ -10,16 +10,16 @@ public class Obstacle : MonoBehaviour
 
         if (player != null)
         {
-            player.Dead(gameObject);
-            OnPlayerCollision();
+            OnPlayerCollision(player);
         }
     }
 
     /// <summary>
-    /// What happend on player collision with obstacle
+    /// Actions happend on player collision with obstacle
     /// </summary>
-    protected virtual void OnPlayerCollision()
+    protected virtual void OnPlayerCollision(PlayerMoving player)
     {
-       Destroy(gameObject);
+        player.Dead(gameObject);
+        Destroy(gameObject);
     }
 }
