@@ -7,21 +7,10 @@ public class Spawner : MonoBehaviour
     public Transform spawnPoint;
     public GameObject[] lvls;
 
-    public static float speed = 0;
+    public static float speed = 2f;
 
     private void Start()
     {
-        PlayerMoving.GameStartded += StartGame;
-    }
-
-    private void OnDestroy()
-    {
-        PlayerMoving.GameStartded -= StartGame;        
-    }
-
-    private void StartGame()
-    {
-        speed = 2f;
         StartCoroutine(AddMoreSpeed());    
     }
 
