@@ -22,7 +22,7 @@ public class GameUIManager : MonoBehaviour
     void FixedUpdate()
     {
         textScore += (int)Spawner.speed / 2;
-        scoreText.text = MakeScore(textScore);
+        scoreText.text = string.Format("{0:D16}", textScore);
     }
 
     void Update()
@@ -31,19 +31,6 @@ public class GameUIManager : MonoBehaviour
             OnPauseButtonClick();
     }
 
-    /// <summary>
-    /// Make score format 0000XXX
-    /// </summary>
-    private string MakeScore(int score)
-    {
-        var len = score.ToString().Length;
-
-        int[] zero = new int[16 - len];
-        string zeros = string.Join("", zero);
-        zeros = string.Concat(zeros, score.ToString());
-        
-        return zeros;
-    }
     /// <summary>
     /// Pause or resume on button pause click
     /// </summary>
