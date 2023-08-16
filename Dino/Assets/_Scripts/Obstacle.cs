@@ -6,12 +6,20 @@ public class Obstacle : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        var obj = collision.gameObject.GetComponent<PlayerMoving>();
+        var player = collision.gameObject.GetComponent<PlayerMoving>();
 
-        if (obj != null)
+        if (player != null)
         {
-            Destroy(gameObject);
-            obj.Dead();
+            player.Dead(gameObject);
+            OnPlayerCollision();
         }
+    }
+
+    /// <summary>
+    /// What happend on player collision with obstacle
+    /// </summary>
+    protected virtual void OnPlayerCollision()
+    {
+       Destroy(gameObject);
     }
 }

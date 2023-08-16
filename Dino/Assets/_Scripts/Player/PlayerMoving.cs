@@ -80,9 +80,9 @@ public class PlayerMoving : MonoBehaviour
         jumpCount = 2;
     }
 
-    public void Dead()
+    public void Dead(GameObject obstacle)
     {
-        Debug.Log(name + " умер");
+        Debug.Log(string.Format("{0} был убит {1}", name, obstacle.name));
         Debug.LogWarning("Добавить звук!");
 
         PlayerDead?.Invoke(name);
