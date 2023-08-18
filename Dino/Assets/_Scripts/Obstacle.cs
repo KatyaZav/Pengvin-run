@@ -19,7 +19,7 @@ public class Obstacle : MonoBehaviour
     /// </summary>
     protected virtual void OnPlayerCollision(PlayerController player)
     {
-        player.Dead(gameObject);
+        player.OnDead(gameObject);
         Destroy(gameObject);
     }
 }

@@ -10,25 +10,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField] string nameJumpControlButtons;
     [SerializeField] string nameSlideControlButtons;
 
-      
-    Animator anim;
-    public bool isGrounded = false;
-    public static float jumpForce = 13;
-    
-   public bool isRun = true;
-
     public static Action<string> PlayerDead;
-
-    void Start()
+      
+    /// <summary>
+    /// Start game actions
+    /// </summary>
+    public void OnGameStarted()
     {
-        anim = GetComponent<Animator>();
-
-        anim.SetBool("idle", !isRun);
+        StartCoroutine(GameLogicPlaying());
     }
 
-    void Update()
+    private IEnumerator GameLogicPlaying()
     {
-        if (isRun)
+        while (true)
         {
             if (isGrounded)
             {
@@ -47,13 +41,9 @@ public class PlayerController : MonoBehaviour
             {
                 Fall();
             }
-        }
-    }
 
-    private void Fall()
-    {
-        rb.velocity = new Vector2(rb.position.x, 0);
-        rb.AddForce(new Vector2(0, -jumpForce/2), ForceMode2D.Impulse);
+            yield return new WaitForEndOfFrame();
+        }
     }
 
     private void Slide()
@@ -62,7 +52,10 @@ public class PlayerController : MonoBehaviour
     }
         
 
-    public void Dead(GameObject obstacle)
+    /// <summary>
+    /// Actions happends on player dead
+    /// </summary>
+    public void OnDead(GameObject obstacle)
     {
         Debug.Log(string.Format("{0} был убит {1}", name, obstacle.name));
         Debug.LogWarning("Добавить звук!");
