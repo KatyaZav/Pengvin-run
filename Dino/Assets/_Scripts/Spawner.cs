@@ -11,6 +11,15 @@ public class Spawner : MonoBehaviour
 
     private void Start()
     {
+        Speed = 0;
+    }
+
+    /// <summary>
+    /// In game started start spewner
+    /// </summary>
+    public void StartSpawner()
+    {
+        Speed = 2f;
         StartCoroutine(AddMoreSpeed());    
     }
 
