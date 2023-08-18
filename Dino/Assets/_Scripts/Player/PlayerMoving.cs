@@ -43,6 +43,8 @@ public class PlayerMoving : MonoBehaviour
         jumpCount--;
         rb.velocity = new Vector2(rb.position.x, 0);
         rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+
+        setBoolIsOnGround(false);
     }
 
     /// <summary>
@@ -54,30 +56,70 @@ public class PlayerMoving : MonoBehaviour
         rb.AddForce(new Vector2(0, -jumpForce / 2), ForceMode2D.Impulse);
     }
 
-    private void Slide()
+    /// <summary>
+    /// Make player slide
+    /// </summary>
+    public void StartSlide()
     {
-        anim.SetBool("slide", Input.GetButton(nameSlideControlButtons.ToString()));
+        setBoolSlide(true);
     }
 
-    private void MakeRunAnimation()
+    /// <summary>
+    /// Make player stop sliding
+    /// </summary>
+    public void StopSlide()
     {
-    }
-
-    private void MakeIdleAnimation()
-    {
-    }
-
-    private void MakeFallAnimation()
-    {
-    }
-
-    private void MakeSlideAnimation()
-    {
+        setBoolSlide(false);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Ground")
+        {
             jumpCount = 2;
+            setBoolIsOnGround(true);
+            setTriggerFall();
+        }
     }
+
+    /// <summary>
+    /// Set bool animation parameter Slide 
+    /// </summary>
+    private void setBoolSlide(bool Bool)
+    {
+        anim.SetBool("Slide", Bool);
+    }
+
+    /// <summary>
+    /// Set bool animation parameter IsOnGround
+    /// </summary>
+    private void setBoolIsOnGround(bool Bool)
+    {
+        anim.SetBool("IsOnGround", Bool);
+    }
+
+    /// <summary>
+    /// Make animation fall
+    /// </summary>
+    private void setTriggerFall()
+    {
+        anim.SetTrigger("Fall");
+    }
+
+    /// <summary>
+    /// Make animation attack
+    /// </summary>
+    public void SetTriggerAttack()
+    {
+        anim.SetTrigger("Attack");
+    }
+
+    /// <summary>
+    /// Make animation walk
+    /// </summary>
+    public void SetTriggerWalk()
+    {
+        anim.SetTrigger("Walk");
+    }
+
 }

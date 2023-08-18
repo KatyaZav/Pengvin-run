@@ -11,12 +11,20 @@ public class PlayerController : MonoBehaviour
     [SerializeField] string nameSlideControlButtons;
 
     public static Action<string> PlayerDead;
-      
+    [SerializeField] PlayerMoving playerMoving;
+
+    private void Start()
+    {
+        if (playerMoving == null)
+            playerMoving = GetComponent<PlayerMoving>();
+    }
+
     /// <summary>
     /// Start game actions
     /// </summary>
     public void OnGameStarted()
     {
+        playerMoving.SetTriggerWalk();
         StartCoroutine(GameLogicPlaying());
     }
 
@@ -24,33 +32,27 @@ public class PlayerController : MonoBehaviour
     {
         while (true)
         {
-            if (isGrounded)
-            {
-                OnFalledOnGround();
-                Slide();
-            }
+            bool canJump = playerMoving.IsGrounded() && playerMoving.IsJumpCountEnought();
 
             if (Input.GetButtonDown(nameJumpControlButtons.ToString())
-                && (isGrounded || jumpCount > 0)
-                && !Input.GetButton(nameSlideControlButtons.ToString()))
+                && canJump)
             {
-                Jump();
+                playerMoving.Jump();
             }
 
-            if (Input.GetButton(nameSlideControlButtons.ToString()) && !isGrounded)
+            if (Input.GetButton(nameSlideControlButtons.ToString()))
             {
-                Fall();
+                if (playerMoving.IsGrounded())
+                    playerMoving.StartSlide();
+                else
+                    playerMoving.MoveDown();
             }
+            if (Input.GetButtonUp(nameSlideControlButtons.ToString()))
+                playerMoving.StopSlide();
 
             yield return new WaitForEndOfFrame();
         }
-    }
-
-    private void Slide()
-    {
-        anim.SetBool("slide", Input.GetButton(nameSlideControlButtons.ToString()));
-    }
-        
+    }         
 
     /// <summary>
     /// Actions happends on player dead
