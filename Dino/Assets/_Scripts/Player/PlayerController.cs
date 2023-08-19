@@ -17,6 +17,13 @@ public class PlayerController : MonoBehaviour
     {
         if (playerMoving == null)
             playerMoving = GetComponent<PlayerMoving>();
+
+        GameUIManager.GameStarted += OnGameStarted;
+    }
+
+    private void OnDestroy()
+    {
+        GameUIManager.GameStarted -= OnGameStarted;
     }
 
     /// <summary>

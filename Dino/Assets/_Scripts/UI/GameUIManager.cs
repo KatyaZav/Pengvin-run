@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,27 +9,34 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] GameObject score;
     [SerializeField] GameObject pauseMenu;
 
-    Text scoreText;
-    int textScore = 0;
+    Text scoreTextUI;
 
+    public static Action GameStarted;
     private static bool isPause;
 
     void Start()
     {
-        scoreText = score.GetComponentInChildren<Text>();
+        scoreTextUI = score.GetComponentInChildren<Text>();
+    }
+
+
+    /// <summary>
+    /// Make game get started
+    /// </summary>
+    public void StartGame()
+    {
+        Debug.Log("Попытка запустить рекламу на все окно");
+        Debug.Log("Свернуть окно меню");
+        Debug.Log("Развернуть ui игры");
+
         Debug.Log("Мини-обучение");
-    }
 
-    void FixedUpdate()
-    {
-        textScore += (int)Spawner.Speed / 2;
-        scoreText.text = string.Format("{0:D16}", textScore);
-    }
+        if (scoreTextUI != null)
+            StartCoroutine(ScoreTextResult());
+        else throw new Exception("Score Text UI is empty");
 
-    void Update()
-    {
-        if (Input.GetButtonDown("Cancel"))
-            OnPauseButtonClick();
+        StartCoroutine(ButtonExcepted());
+        GameStarted?.Invoke();
     }
 
     /// <summary>
@@ -60,5 +68,36 @@ public class GameUIManager : MonoBehaviour
         Time.timeScale = 1;
         isPause = false;
         pauseMenu.SetActive(false);
+    }
+
+
+    /// <summary>
+    /// Pause buttons excepted
+    /// </summary>
+    IEnumerator ButtonExcepted()
+    {
+        while (true)
+        {
+            if (Input.GetButtonDown("Cancel"))
+                OnPauseButtonClick();
+
+            yield return new WaitForSeconds(1);
+        }
+    }
+
+    /// <summary>
+    /// Show and update score text ui
+    /// </summary>
+    IEnumerator ScoreTextResult()
+    {
+        float textScore = 0;
+
+        while (true)
+        {
+            textScore += (int)Spawner.Speed / 2;
+            scoreTextUI.text = string.Format("{0:D16}", textScore);
+
+            yield return new WaitForEndOfFrame();
+        }
     }
 }
