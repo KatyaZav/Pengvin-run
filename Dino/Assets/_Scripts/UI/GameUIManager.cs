@@ -95,7 +95,7 @@ public class GameUIManager : MonoBehaviour
         while (true)
         {
             textScore += (int)Spawner.Speed / 2;
-            scoreTextUI.text = string.Format("{0:D16}", textScore);
+            scoreTextUI.text = string.Format("{0:D16}", (int)textScore);
 
             yield return new WaitForEndOfFrame();
         }

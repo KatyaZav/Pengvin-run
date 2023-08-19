@@ -129,6 +129,7 @@ MonoBehaviour:
   nameJumpControlButtons: OnlyPlayerUp
   nameSlideControlButtons: OnlyPlayerDown
   playerMoving: {fileID: 3829088641967594598}
+  effect: {fileID: 4637322169174811666}
 --- !u!95 &731799297739399145
 Animator:
   serializedVersion: 5
@@ -185,8 +186,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundMask:
     serializedVersion: 2
-    m_Bits: 0
-  footPos: {fileID: 0}
+    m_Bits: 128
+  footPos: {fileID: 731799298898614648}
   jumpCount: 2
 --- !u!61 &731799297739399149
 BoxCollider2D:

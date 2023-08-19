@@ -9,9 +9,15 @@ public class Spawner : MonoBehaviour
 
     public static float Speed { get; private set;}
 
-    private void Start()
+    private void Awake()
     {
         Speed = 0;
+        GameUIManager.GameStarted += StartSpawner;
+    }
+
+    private void OnDestroy()
+    {
+        GameUIManager.GameStarted -= StartSpawner;
     }
 
     /// <summary>
@@ -45,7 +51,6 @@ public class Spawner : MonoBehaviour
             if (Speed < 20f)
             {
                 Speed += 0.5f;
-                Debug.Log(string.Format("Speed increase to {0}", Speed));
             }
 
             yield return new WaitForSeconds(Speed/3);
