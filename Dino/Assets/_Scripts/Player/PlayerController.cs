@@ -12,11 +12,12 @@ public class PlayerController : MonoBehaviour
 
     public static Action<string> PlayerDead;
     [SerializeField] PlayerMoving playerMoving;
+    [SerializeField] Effects effect;
 
     private void Start()
     {
-        if (playerMoving == null)
-            playerMoving = GetComponent<PlayerMoving>();
+        if (playerMoving == null) playerMoving = GetComponent<PlayerMoving>();
+        if (effect == null) effect = GetComponent<Effects>(); 
 
         GameUIManager.GameStarted += OnGameStarted;
     }
@@ -45,6 +46,7 @@ public class PlayerController : MonoBehaviour
                 && canJump)
             {
                 playerMoving.Jump();
+                effect.PlayEffectJump();
             }
 
             if (Input.GetButton(nameSlideControlButtons.ToString()))
@@ -66,6 +68,8 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public void OnDead(GameObject obstacle)
     {
+        effect.PlayEffectDied();
+
         Debug.Log(string.Format("{0} был убит {1}", name, obstacle.name));
         Debug.LogWarning("Добавить звук!");
 

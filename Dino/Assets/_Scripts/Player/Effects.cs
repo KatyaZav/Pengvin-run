@@ -6,4 +6,22 @@ public class Effects : MonoBehaviour
 {
     [SerializeField] GameObject[] jumpEffects;
     [SerializeField] GameObject[] diedEffects;
+
+    /// <summary>
+    /// Make jump effect
+    /// </summary>
+    public void PlayEffectJump()
+    {
+        var rnd = Random.Range(0, jumpEffects.Length);
+        Instantiate(jumpEffects[rnd], transform.position, Quaternion.identity);
+    }
+
+    /// <summary>
+    /// Make died effect
+    /// </summary>
+    public void PlayEffectDied()
+    {
+        var rnd = Random.Range(0, diedEffects.Length);
+        Instantiate(diedEffects[rnd], transform.position, Quaternion.identity);
+    }
 }
