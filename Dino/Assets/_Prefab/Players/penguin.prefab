@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 731799297739399144}
   - component: {fileID: 731799297739399143}
+  - component: {fileID: 4637322169174811666}
   - component: {fileID: 731799297739399148}
   - component: {fileID: 731799297739399145}
   - component: {fileID: 731799297739399146}
@@ -90,6 +91,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4637322169174811666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731799297739399142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a7daaba6c40f644d8c8f50fbe50a221, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpEffects:
+  - {fileID: 100018, guid: a40b64bf23366dc42a892af2c6ff6140, type: 3}
+  - {fileID: 100000, guid: 83cd9cc9f9c88824ba18dc59b05ae328, type: 3}
+  - {fileID: 100000, guid: f2dba9e16cd347f44a395b8204544ee5, type: 3}
+  diedEffects:
+  - {fileID: 100000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
+  - {fileID: 100000, guid: 3156817f64ec68948ad6bb26569b9ef5, type: 3}
+  - {fileID: 1040608886635896, guid: a97415c6b57076f41a6621a7b51d63a3, type: 3}
+  - {fileID: 100000, guid: 979632a27455af442bd2d8f36eb0ffce, type: 3}
+  - {fileID: 1280141305896002, guid: e473029e4c70ad543a6879b82a732f4f, type: 3}
 --- !u!114 &731799297739399148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,13 +128,7 @@ MonoBehaviour:
   name: OnlyPlayer
   nameJumpControlButtons: OnlyPlayerUp
   nameSlideControlButtons: OnlyPlayerDown
-  jumpCount: 2
-  isGrounded: 0
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 128
-  footPos: {fileID: 731799298898614648}
-  isRun: 1
+  playerMoving: {fileID: 3829088641967594598}
 --- !u!95 &731799297739399145
 Animator:
   serializedVersion: 5
@@ -166,6 +183,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 346912dd673b0c540b7d777622d26575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
+  footPos: {fileID: 0}
+  jumpCount: 2
 --- !u!61 &731799297739399149
 BoxCollider2D:
   m_ObjectHideFlags: 0
