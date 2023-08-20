@@ -27,6 +27,16 @@ public class GameUIManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Save game progress and leave game
+    /// </summary>
+    public void SaveAndExit()
+    {
+        Debug.Log("Save");
+
+        ChangeScene(SceneManager.GetActiveScene().ToString());
+    }
+
+    /// <summary>
     /// Change UI on game started or finish
     /// </summary>
     private void ChangeUIMenu(bool isGameStarted)
