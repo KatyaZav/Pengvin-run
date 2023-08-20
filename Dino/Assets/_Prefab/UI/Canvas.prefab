@@ -596,6 +596,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: {fileID: 4423277754878344833}
   pauseMenu: {fileID: 4423277755914094777}
+  GameUI: {fileID: 4423277755164971300}
+  MenuUI: {fileID: 4423277755815064206}
 --- !u!1 &4423277754712802020
 GameObject:
   m_ObjectHideFlags: 0

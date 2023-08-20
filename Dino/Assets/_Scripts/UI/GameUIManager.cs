@@ -10,16 +10,29 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] GameObject score;
     [SerializeField] GameObject pauseMenu;
 
+    [SerializeField] GameObject GameUI;
+    [SerializeField] GameObject MenuUI;
+
     Text scoreTextUI;
 
     public static Action GameStarted;
-    private static bool isPause;
+    private static bool isPause;    
 
     void Start()
     {
         scoreTextUI = score.GetComponentInChildren<Text>();
+        ChangeUIMenu(false);
 
         Debug.Log("Прогрузить рекорд");
+    }
+
+    /// <summary>
+    /// Change UI on game started or finish
+    /// </summary>
+    private void ChangeUIMenu(bool isGameStarted)
+    {
+        GameUI.SetActive(isGameStarted);
+        MenuUI.SetActive(!isGameStarted);
     }
 
     /// <summary>
@@ -36,8 +49,7 @@ public class GameUIManager : MonoBehaviour
     public void StartGame()
     {
         Debug.Log("Попытка запустить рекламу на все окно");
-        Debug.Log("Свернуть окно меню");
-        Debug.Log("Развернуть ui игры");
+        ChangeUIMenu(true);
 
         Debug.Log("Мини-обучение");
 
@@ -104,9 +116,12 @@ public class GameUIManager : MonoBehaviour
 
         while (true)
         {
-            textScore += (int)Spawner.Speed / 2;
-            scoreTextUI.text = string.Format("{0:D16}", (int)textScore);
+            if (!isPause)
+            {
+                textScore += (int)Spawner.Speed / 2;
+                scoreTextUI.text = string.Format("{0:D16}", (int)textScore);
 
+            }
             yield return new WaitForEndOfFrame();
         }
     }
