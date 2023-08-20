@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameUIManager : MonoBehaviour
 {
@@ -17,8 +18,17 @@ public class GameUIManager : MonoBehaviour
     void Start()
     {
         scoreTextUI = score.GetComponentInChildren<Text>();
+
+        Debug.Log("Прогрузить рекорд");
     }
 
+    /// <summary>
+    /// Load scene with name sceneName
+    /// </summary>
+    public void ChangeScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
 
     /// <summary>
     /// Make game get started
