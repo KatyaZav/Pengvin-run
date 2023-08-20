@@ -42,8 +42,6 @@ public class PlayerController : MonoBehaviour
         {
             bool canJump = playerMoving.IsGrounded() && playerMoving.IsJumpCountEnought();
 
-            Debug.Log(Input.GetButtonDown(nameJumpControlButtons.ToString()));
-
             if (Input.GetButtonDown(nameJumpControlButtons.ToString())
                 && canJump)
             {
@@ -64,7 +62,7 @@ public class PlayerController : MonoBehaviour
 
             yield return new WaitForEndOfFrame();
         }
-    }         
+    }
 
     /// <summary>
     /// Actions happends on player dead
