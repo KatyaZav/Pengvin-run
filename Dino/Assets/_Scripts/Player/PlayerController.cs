@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public void OnDead(GameObject obstacle)
     {
-        effect.PlayEffectDied();
+        effect.PlayEffectDied(obstacle);
 
         Debug.Log(string.Format("{0} был убит {1}", name, obstacle.name));
         Debug.LogWarning("Добавить звук!");

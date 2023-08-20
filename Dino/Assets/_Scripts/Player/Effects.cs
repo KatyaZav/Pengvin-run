@@ -19,9 +19,9 @@ public class Effects : MonoBehaviour
     /// <summary>
     /// Make died effect
     /// </summary>
-    public void PlayEffectDied()
+    public void PlayEffectDied(GameObject obst)
     {
         var rnd = Random.Range(0, diedEffects.Length);
-        Instantiate(diedEffects[rnd], transform.position, Quaternion.identity);
+        Instantiate(diedEffects[rnd], obst.transform.position, Quaternion.identity);
     }
 }
