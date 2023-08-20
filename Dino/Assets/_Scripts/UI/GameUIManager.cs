@@ -16,7 +16,7 @@ public class GameUIManager : MonoBehaviour
     Text scoreTextUI;
 
     public static Action GameStarted;
-    private static bool isPause;    
+    private bool isPause;    
 
     void Start()
     {
@@ -33,7 +33,7 @@ public class GameUIManager : MonoBehaviour
     {
         Debug.Log("Save");
 
-        ChangeScene(SceneManager.GetActiveScene().ToString());
+        ChangeScene(SceneManager.GetActiveScene().name);
     }
 
     /// <summary>
@@ -50,6 +50,7 @@ public class GameUIManager : MonoBehaviour
     /// </summary>
     public void ChangeScene(string sceneName)
     {
+        Continue();
         SceneManager.LoadScene(sceneName);
     }
 
