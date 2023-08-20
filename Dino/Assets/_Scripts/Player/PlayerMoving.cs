@@ -95,7 +95,7 @@ public class PlayerMoving : MonoBehaviour
     /// </summary>
     private void setBoolIsOnGround(bool Bool)
     {
-        anim.SetBool("IsOnGround", Bool);
+        anim.SetBool("IsOnGroung", Bool);
     }
 
     /// <summary>

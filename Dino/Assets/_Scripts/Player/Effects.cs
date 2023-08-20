@@ -13,12 +13,15 @@ public class Effects : MonoBehaviour
     public void PlayEffectJump()
     {
         var rnd = Random.Range(0, jumpEffects.Length);
-        Instantiate(jumpEffects[rnd], transform.position, Quaternion.identity);
+        var pos = transform.position;
+        pos.y -= 2.5f;
+
+        Instantiate(jumpEffects[rnd], pos, Quaternion.identity);
     }
 
     /// <summary>
-    /// Make died effect
-    /// </summary>
+    /// Make died effect in obstacle position
+    /// </summary> 
     public void PlayEffectDied(GameObject obst)
     {
         var rnd = Random.Range(0, diedEffects.Length);
