@@ -14,7 +14,7 @@ public class Effects : MonoBehaviour
     {
         var rnd = Random.Range(0, jumpEffects.Length);
         var pos = transform.position;
-        pos.y -= 2.5f;
+        pos.y -= 1f;
 
         Instantiate(jumpEffects[rnd], pos, Quaternion.identity);
     }

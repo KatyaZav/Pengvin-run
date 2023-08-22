@@ -14,12 +14,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] PlayerMoving playerMoving;
     [SerializeField] Effects effect;
 
-    private void Start()
+    private void Awake()
     {
         if (playerMoving == null) playerMoving = GetComponent<PlayerMoving>();
         if (effect == null) effect = GetComponent<Effects>(); 
 
         GameUIManager.GameStarted += OnGameStarted;
+
+        this.enabled = false;
     }
 
     private void OnDestroy()
@@ -33,16 +35,14 @@ public class PlayerController : MonoBehaviour
     public void OnGameStarted()
     {
         playerMoving.SetTriggerWalk();
-        StartCoroutine(GameLogicPlaying());
+        enabled = true;
     }
 
-    private IEnumerator GameLogicPlaying()
+    private void Update()
     {
-        while (true)
-        {
-            bool canJump = playerMoving.IsGrounded() && playerMoving.IsJumpCountEnought();
+            bool canJump = playerMoving.IsGrounded() || playerMoving.IsJumpCountEnought();
 
-            Debug.Log(Input.GetButtonDown(nameJumpControlButtons.ToString()));
+            Debug.Log(Input.GetButtonDown(nameJumpControlButtons.ToString())+ " "+ canJump );
 
             if (Input.GetButtonDown(nameJumpControlButtons.ToString())
                 && canJump)
@@ -60,10 +60,7 @@ public class PlayerController : MonoBehaviour
             }
 
             if (Input.GetButtonUp(nameSlideControlButtons.ToString()))
-                playerMoving.StopSlide();
-
-            yield return new WaitForEndOfFrame();
-        }
+                playerMoving.StopSlide();        
     }
 
     /// <summary>

@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 731799297739399149}
   m_Layer: 6
   m_Name: penguin
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,7 +106,6 @@ MonoBehaviour:
   jumpEffects:
   - {fileID: 100018, guid: a40b64bf23366dc42a892af2c6ff6140, type: 3}
   - {fileID: 100000, guid: 83cd9cc9f9c88824ba18dc59b05ae328, type: 3}
-  - {fileID: 100000, guid: f2dba9e16cd347f44a395b8204544ee5, type: 3}
   diedEffects:
   - {fileID: 100000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
   - {fileID: 100000, guid: 3156817f64ec68948ad6bb26569b9ef5, type: 3}
